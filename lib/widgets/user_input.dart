@@ -21,6 +21,9 @@ class UserInput extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: TextField(
               controller: textController,
+              style: const TextStyle(
+                color: Colors.white,
+              ),
               decoration: const InputDecoration(
                 hintText: "add new todo",
                 hintStyle: TextStyle(
@@ -34,6 +37,7 @@ class UserInput extends StatelessWidget {
           //Button
           GestureDetector(
             onTap: () {
+              if(textController.text == "") return;
               var myTodo = Todo(
                 title: textController.text,
                 creationDate: DateTime.now(),

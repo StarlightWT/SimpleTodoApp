@@ -13,7 +13,6 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-
   var db = DatabaseConnect();
 
   void addItem(Todo todo) async {
@@ -25,18 +24,25 @@ class _HomepageState extends State<Homepage> {
     await db.deleteTodo(todo);
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF5EBFF),
       appBar: AppBar(
         title: const Text("Todo list"),
+        centerTitle: true,
         foregroundColor: Colors.white,
         backgroundColor: const Color.fromRGBO(20, 20, 25, 100),
       ),
       body: Column(children: [
-        Todolist(insertFunction: addItem, deleteFunction: removeItem,),
-        UserInput(insertFunction: addItem,),
+        Todolist(
+          insertFunction: addItem,
+          deleteFunction: removeItem,
+        ),
+        UserInput(
+          insertFunction: addItem,
+        ),
       ]),
     );
   }
